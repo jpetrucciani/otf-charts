@@ -6,28 +6,27 @@
 replicaCount: 1
 
 image:
-  repository: leg100/otfd
+  repository: jpetrucciani/otfd
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
-
+  tag: ''
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 # System hostname used in links - if unset then a hostname is inferred
 # from the listening address. It's recommended you set this.
 
 # -- Set client-accessible hostname. See [docs](https://docs.otf.ninja/latest/config/flags/#-hostname).
-hostname: ""
+hostname: ''
 
 postgres:
   # -- Install postgres chart dependency.
   enabled: false
 
 # -- Postgres connection string
-database: ""
+database: ''
 
 # -- (object) Source database username from a secret
 databaseUsernameFromSecret:
@@ -47,25 +46,26 @@ databasePasswordFromSecret:
 extraEnvs: []
 
 # -- Environment variables to be passed to the deployment from the named kubernetes secret.
-envsFromSecret: ""
+envsFromSecret: ''
 
 # -- Cryptographic secret. Must be a hex-encoded 16-byte string. See [docs](https://docs.otf.ninja/latest/config/flags/#-secret).
-secret: ""
+secret: ''
 # -- Source cryptographic secret from a kubernetes secret instead.
-secretFromSecret: {}
+secretFromSecret:
+  {}
   # name of secret
   # name: ""
   # key within secret containing cryptographic secret
   # key: ""
 
 # -- Site admin token - empty string disables the site admin account. See [docs](https://docs.otf.ninja/latest/config/flags/#-site-token).
-siteToken: ""
+siteToken: ''
 
 # -- Site admins - list of user accounts promoted to site admin. See [docs](https://docs.otf.ninja/latest/config/flags/#-site-admins).
 siteAdmins: []
 
 # -- Max config upload size in bytes. See [docs](https://docs.otf.ninja/latest/config/flags/#-max-config-size).
-maxConfigSize: ""
+maxConfigSize: ''
 
 logging:
   # -- Logging verbosity, the higher the number the more verbose the logs. See [docs](https://docs.otf.ninja/latest/config/flags/#-v).
@@ -77,35 +77,35 @@ logging:
 
 github:
   # -- Github OAuth client ID. See [docs](https://docs.otf.ninja/latest/config/flags/#-github-client-id).
-  clientID: ""
+  clientID: ''
   # -- Github OAuth client secret. See [docs](https://docs.otf.ninja/latest/config/flags/#-github-client-secret).
-  clientSecret: ""
+  clientSecret: ''
   # -- Github hostname to use for all interactions with Github.
-  hostname: "github.com"
+  hostname: 'github.com'
 
 gitlab:
   # -- Gitlab OAuth client ID. See [docs](https://docs.otf.ninja/latest/config/flags/#-gitlab-client-id).
-  clientID: ""
+  clientID: ''
   # -- Gitlab OAuth client secret. See [docs](https://docs.otf.ninja/latest/config/flags/#-gitlab-client-secret).
-  clientSecret: ""
+  clientSecret: ''
   # -- Gitlab hostname to use for all interactions with Gitlab.
-  hostname: "gitlab.com"
+  hostname: 'gitlab.com'
 
 google:
   # -- The Google JWT audience claim for validation. Validation is skipped if empty. See [docs](https://docs.otf.ninja/latest/config/flags/#-google-jwt-audience).
-  audience: ""
+  audience: ''
 
 oidc:
   # -- values for configuring OIDC authentication. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/)
 
   # -- OIDC provider name. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/).
-  name: ""
+  name: ''
   # -- OIDC issuer URL. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/).
-  issuerURL: ""
+  issuerURL: ''
   # -- OIDC client ID. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/).
-  clientID: ""
+  clientID: ''
   # -- Override OIDC claim used for username. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/).
-  usernameClaim: ""
+  usernameClaim: ''
   # -- Override OIDC scopes. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/).
   scopes: []
   # -- (object) Source OIDC client secret from a k8s secret. See [docs](https://docs.otf.ninja/latest/auth/providers/oidc/).
@@ -121,13 +121,14 @@ serviceAccount:
   # -- Annotations to add to the service account
   annotations: {}
   # -- The name of the service account to use. If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: ''
 
 # -- Add annotations to otfd pod
 podAnnotations: {}
 
 # -- Set security context for otfd pod
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
 service:
@@ -142,7 +143,8 @@ ingress:
   # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
   # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
   # className: nginx
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   path: /
@@ -173,7 +175,8 @@ proxy:
 # -- Specify hosts for which outbound connections should not use the proxy.
 no_proxy:
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following

@@ -6,7 +6,7 @@ on:
       - '*'
   push:
     branches:
-      - master
+      - main
 
 jobs:
   lint-test:
@@ -30,7 +30,7 @@ jobs:
           kubectl -n otf-test logs -l app.kubernetes.io/name=postgresql
           kubectl -n otf-test logs -l app.kubernetes.io/name=otf
   release:
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: lint-test
     permissions:
       contents: write
@@ -50,4 +50,4 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.1
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
