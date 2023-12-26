@@ -14,9 +14,9 @@ helm repo add otf https://jpetrucciani.github.io/otf-charts
 
 To install the chart you need at the very minimum:
 
-* A PostgreSQL database up and running.
-* A hex-coded 16 byte [secret](https://docs.otf.ninja/latest/config/flags#-secret).
-* Either setup an [identity provider](https://docs.otf.ninja/latest/auth#identity-providers) or set a [site admin token](https://docs.otf.ninja/latest/auth#site-admin).
+- A PostgreSQL database up and running.
+- A hex-coded 16 byte [secret](https://docs.otf.ninja/latest/config/flags#-secret).
+- Either setup an [identity provider](https://docs.otf.ninja/latest/auth#identity-providers) or set a [site admin token](https://docs.otf.ninja/latest/auth#site-admin).
 
 For example, if a PostgreSQL server is accessible via the hostname `postgres`, has a database named `otf` accessible to a user with username `postgres` and password `postgres`:
 
@@ -32,9 +32,9 @@ helm install otf otf/otf -f ./charts/otf/test-values.yaml
 
 This will:
 
-* Install PostgreSQL on the cluster
-* Set secret
-* Set a site token
+- Install PostgreSQL on the cluster
+- Set secret
+- Set a site token
 
 Note: you should only use this for testing purposes.
 
